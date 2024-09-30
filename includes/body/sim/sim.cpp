@@ -28,7 +28,7 @@ EXP1      : 0.75  : Body Weight Exponent on CL and Q
 EXP2      : 1.0  : Body Weight Exponent on V2 and V3
 WT        : 0       : Individual Baeline Body Weight
 
-$OMEGA @annotated @block
+$OMEGA @annotated
 ECL : 0.09 : Random effect on CL
 EV2 : 0.05 : Random effect on V2
 EF1 : 0.2 : Random effect on F1
