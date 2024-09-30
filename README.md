@@ -1,6 +1,6 @@
 # Standardized R shiny template for PK/PD/QSP simulations
 
-<img src="https://cardpro.rpkg.net/assets/image4.jpg">
+<img src="www/sample.jpg">
 
 Standardizing R scripts used to create shiny dashboards for reporting scientific findings, doing simulations and estimation, and regulatory submissions is important for several reasons. It allows pharmacometricians in different organizations and companies to share and reuse code more easily. 
 
