@@ -1,4 +1,4 @@
-# Standardized shiny template for PK/PD/QSP simulations
+# Standardized R shiny template for PK/PD/QSP simulations
 
 <img src="https://cardpro.rpkg.net/assets/image4.jpg">
 
