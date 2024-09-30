@@ -70,7 +70,7 @@ body.main <- moveable(
       editbtn = TRUE,
       tabs = list(
         tabEntry("Summary",
-                 tableOutput('summaryrestbl')
+                 DTOutput('summaryrestbl')
         ),
         tabEntry("Raw result",
                  DTOutput('rawrestbl'))
