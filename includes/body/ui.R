@@ -46,6 +46,7 @@ body.main <- moveable(
   primePanel(
     card.pro(
       title = "Plot graph",
+      header.bg = "yellow",
       xtra.header.content = textOutput("reportgraphstatus"),
       plotOutput("distPlot"),
       sidebar = div(
