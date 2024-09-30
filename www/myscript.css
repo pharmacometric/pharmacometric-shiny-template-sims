@@ -2,8 +2,8 @@
   height: 100%!important;
 }
 #tracksimulations, #reportgraphstatus{
-  color: red;
+  color: red!important;
 }
 #summaryrestbl table{
-  width:100%;
+  width:100%!important;
 }
