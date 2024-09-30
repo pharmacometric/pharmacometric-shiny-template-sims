@@ -3,12 +3,9 @@ quickcode::libraryAll(
   ggplot2,
   dplyr,
   mrgsolve,
-  dmutate,
-  BE,
   patchwork,
   flextable,
-  nlme,
-  sasLM
+  nlme
 )
 
 
