@@ -4,3 +4,6 @@
 #tracksimulations, #reportgraphstatus{
   color: red;
 }
+#summaryrestbl table{
+  width:100%;
+}
