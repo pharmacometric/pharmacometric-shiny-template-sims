@@ -25,8 +25,8 @@ observeEvent(input$runsimbutton,{
 })
 
 
-output$summaryrestbl = renderDT(
-  regimenDT, options = list(lengthChange = FALSE,dom = 't')
+output$summaryrestbl = renderTable(
+  {regimenDT}
 )
 
 output$rawrestbl = renderDT(
