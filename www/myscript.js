@@ -1,12 +1,10 @@
 //include stylesheet if not included
-(function(s){
-  var link = document.createElement( "link" );
-  link.href = s;
-  link.type = "text/css";
-  link.rel = "stylesheet";
-  link.media = "screen,print";
-  document.getElementsByTagName( "head" )[0].appendChild( link );
-})("myscript.css")
+var link = document.createElement( "link" );
+link.href = "myscript.css";
+link.type = "text/css";
+link.rel = "stylesheet";
+link.media = "screen,print";
+document.getElementsByTagName( "head" )[0].appendChild( link );
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -14,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //include shadow for cards if not included
 document.querySelectorAll('.jarviswidget').forEach(function(e) {
-   //e.className = e.className + " shadow"
+   // e.className = e.className + " shadow"
 });
 
 
