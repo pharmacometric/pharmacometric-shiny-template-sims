@@ -1,11 +1,13 @@
 # load libraries
-library(ggplot2)
-library(dplyr)
-library(mrgsolve)
-library(patchwork)
-library(flextable)
-library(nlme)
-library(markdown)
+quickcode::libraryAll(
+  ggplot2,
+  dplyr,
+  mrgsolve,
+  patchwork,
+  flextable,
+  nlme
+)
+
 
 setpath <- function(){
 
@@ -31,23 +33,16 @@ updateGraphStatus <- function(message = "Generating graphs..."){
 }
 
 
+disableSims <- function(is = "true"){
+  shinyjs::runjs(paste0('$("#runsimbutton").prop("disabled",',is,')'))
+}
 
 
-
-theme1 <- theme(
-  panel.border = element_rect(linetype = 1, fill = NA),
-  plot.margin = margin(0.5, 1, 0.5, 1, "cm"),
-  plot.title = element_text(size = 20, face = "bold", hjust = 0.5, vjust = 3),
-  strip.text = element_text(size = 13),
-  axis.ticks = element_line(size = 0.8, color = "#000000"),
-  axis.ticks.length = unit(0.2, "cm"),
-  axis.text = element_text(size = 14),
-  axis.title = element_text(size = 14),
-  axis.title.y = element_text(margin = margin(t = 0, r = 1, b = 0, l = 0)),
-  axis.title.x = element_text(margin = margin(t = 5, r = 0, b = 0, l = 0)),
-  legend.text = element_text(size = 13),
-  legend.title = element_text(size = 14)
-)
+potheme <- list(theme(
+  axis.title.y = element_text(face = "bold"),
+  panel.background = element_rect(colour = "#333333"),
+  strip.text = element_text(face = "bold")
+))
 
 po.nopanel0 <- list(theme(
   axis.title.x = element_text(size = 16),
@@ -100,3 +95,9 @@ po.nopanel <- list(theme(
   plot.title = element_text(size = 10, face = "bold")
 ))
 
+
+
+
+pop_off <- function(.){
+  .[1:{length(.)-1}]
+}
