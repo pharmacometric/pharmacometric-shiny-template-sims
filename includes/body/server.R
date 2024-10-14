@@ -1,8 +1,7 @@
-print("just here...server...body")
-print(this.path)
+for(e in list.files(file.path(this.path,"sim/"), pattern = ".R$"))
+  source(file.path(this.path,"sim", e), local = TRUE)
 
 
-source(file.path(this.path,"sim/sim.R"), local = TRUE)
 
 
 
@@ -19,16 +18,35 @@ output$tracksimulations <- renderText({
 
 
 observeEvent(input$runsimbutton,{
-  updateSimStatus("Running simulations...")
-  updateGraphStatus()
-  #output$tracksimulations <- renderText({"Running simulations..."})
+  disableSims()
+  GLOBAL$start.sim <- TRUE
 })
 
 
 output$summaryrestbl = renderDT(
-  regimenDT, options = list(lengthChange = FALSE,dom = 't')
+  data01(), options = list(lengthChange = FALSE,dom = 't')
 )
 
 output$rawrestbl = renderDT(
   iris, options = list(lengthChange = FALSE), filter = list(position = "top")
 )
+
+
+
+output$rhstable1 <- renderRHandsontable({
+  rhandsontable(regimenDT, width = "100%") %>%
+    hot_context_menu(allowRowEdit = FALSE, allowColEdit = FALSE)
+})
+
+
+#identical(rTable_content(),input$rTable)
+
+GLOBAL$lastregimen <- data.frame()
+
+finalregimen <- reactive({
+  if (!is.null(input$rhstable1)){
+    GLOBAL$lastregimen <- as.data.frame(hot_to_r(input$rhstable1))
+  }
+  GLOBAL$lastregimen
+})
+
