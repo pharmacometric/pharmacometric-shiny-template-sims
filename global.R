@@ -46,3 +46,9 @@ for (ui_each in c(
   source(file.path(ui_each,"libs.R"), local = T)
 }
 
+
+
+GLOBAL<- reactiveValues()
+GLOBAL$lastsim <- NULL
+GLOBAL$start.sim <- FALSE
+seed.val <- 67772
