@@ -7,3 +7,7 @@
 #summaryrestbl table{
   width:100%!important;
 }
+
+.chat-list-body .selectize-input {
+    min-height: 20px!important;
+}
