@@ -1,13 +1,11 @@
 # load libraries
-quickcode::libraryAll(
-  ggplot2,
-  dplyr,
-  mrgsolve,
-  patchwork,
-  flextable,
-  nlme
-)
-
+library(ggplot2)
+library(dplyr)
+library(mrgsolve)
+library(patchwork)
+library(flextable)
+library(nlme)
+library(markdown)
 
 setpath <- function(){
 
