@@ -4,6 +4,6 @@ regimenDT = data.frame(
   Frequency = rep(sample(1:3,2),3),
   Additional = 3,
   Route = rep(sample(c("IV","SC")),3),
-  F1 = 0.6,
+  WT = 70,
   stringsAsFactors = FALSE
 )
