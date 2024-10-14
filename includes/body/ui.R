@@ -23,7 +23,7 @@ body.main <- moveable(
         tabEntry("Main",
                  numericInput("samplesize","Number of participants (per arm)",100, width = "100%"),
                  numericInput("enddoseat","Treatment duration (wks)",30, width = "100%"),
-                 numericInput("samplingfrequency","Sampling frequency (hr)",100, width = "100%"),
+                 numericInput("samplingfrequency","Sampling frequency (hr)",1, width = "100%"),
                  actionButton("runsimbutton", "Start simulation", icon = icon("running"))
                  ),
         tabEntry("Parameters", "First tab")
@@ -36,9 +36,10 @@ body.main <- moveable(
       colorbtn = FALSE,
       expandbtn = FALSE,
       editbtn = TRUE,
-      collapsed = TRUE,
-      rhandsontable(regimenDT, width = "100%") %>%
-        hot_context_menu(allowRowEdit = FALSE, allowColEdit = FALSE),
+      collapsed = FALSE,
+      rHandsontableOutput("rhstable1"),
+      # rhandsontable(regimenDT, width = "100%") %>%
+      #   hot_context_menu(allowRowEdit = FALSE, allowColEdit = FALSE),
 
       footer = "Legend: Group - treatment group, Dose - dose in mg, Frequency - dosing frequency as integer, Additional - number of additional doses, Route - route of administration, F1 - bioavilability for the group"
     )
@@ -48,17 +49,40 @@ body.main <- moveable(
       title = "Plot graph",
       header.bg = "yellow",
       xtra.header.content = textOutput("reportgraphstatus"),
-      plotOutput("distPlot"),
+      plotOutput("distPlot", height = 600),
       sidebar = div(
-        textInput("labely", "Y-label", "Counts by Histogram"),
-        sliderInput("bins",
-                    "Number of bins:",
+        tags$label("Graph settings"),
+        selectInput("graphtype","Graph type",choices = c(
+          "Combined","Facet by ID","Facet by Group","Facet by Dose"
+        ), selected = "Combined"),
+        conditionalPanel(
+          condition = "input.graphtype == 'Combined' | input.graphtype == 'Facet by Group'",
+        selectInput("graphtype2","Statistic",choices = c(
+          "Mean","Mean ± SD", "Mean ± SEM","Median","Median ± 90% PI"
+        ), selected = "Mean")),
+        textInput("labely", "Y-label", "Predicted Concentration (μg/ml)"),
+        textInput("labelx", "X-label", "Time after first dose (days)"),
+        selectInput("graphfont","Font type",choices = c(
+          "Times","Verdana","Arial","Courier","Comic Sans MS"
+        ), selected = "Arial"),
+        sliderInput("fontxytitle",
+                    "Font-size title",
                     min = 1,
                     max = 50,
-                    value = 30
+                    value = 14
         ),
-        textInput("labely1", "Y-label", "Counts by Histogram"),
-        textInput("labelx1", "X-label", "X laboratory"),
+        sliderInput("fontxyticks",
+                    "Font-size ticks",
+                    min = 1,
+                    max = 50,
+                    value = 12
+        ),
+        sliderInput("fontxystrip",
+                    "Font-size strip",
+                    min = 1,
+                    max = 50,
+                    value = 12
+        ),
         textInput("labely1", "W-label", "Counts by Histogram"),
         textInput("labelx1", "Q-label", "X laboratory"),
         textInput("labely1", "V-label", "Counts by Histogram"),
