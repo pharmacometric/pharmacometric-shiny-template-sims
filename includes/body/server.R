@@ -23,8 +23,12 @@ observeEvent(input$runsimbutton,{
 })
 
 
-output$summaryrestbl = renderDT(
+output$subrestbl = renderDT(
   data01(), options = list(lengthChange = FALSE,dom = 't')
+)
+
+output$summaryrestbl = renderDT(
+  data.frame(Treatment = letters[1:3],AUC = number(3), Cmax = number(3)), options = list(lengthChange = FALSE,dom = 't')
 )
 
 output$rawrestbl = renderDT(
