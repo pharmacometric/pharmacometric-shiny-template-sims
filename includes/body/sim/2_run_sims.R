@@ -14,7 +14,7 @@ observe({
     updateSimStatus("Preparing data...")
     dataa <- data01()
 
-
+    set.seed(input$simulationseed)
     updateSimStatus("Running simulations...")
     GLOBAL$lastsim <- NULL
     GLOBAL$lastsim <- mod %>%
