@@ -24,7 +24,7 @@ observeEvent(input$runsimbutton,{
 
 
 output$subrestbl = renderDT(
-  data01(), options = list(lengthChange = FALSE,dom = 't')
+  data01(), options = list(lengthChange = FALSE)
 )
 
 output$summaryrestbl = renderDT(
