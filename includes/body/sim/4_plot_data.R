@@ -22,10 +22,11 @@ output$distPlot <- renderPlot({
 observe({
   output$distPlot <- renderPlot({
 
-    updateGraphStatus("Preparing plots...")
+    updateGraphStatus("...")
 
 
     if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim)) {
+      updateGraphStatus("Preparing plots...")
       gplo1 <- ggplot(data = GLOBAL$lastsim) +
         geom_line(aes(x = time, y = IPRED, color = Group)) +
         labs(
