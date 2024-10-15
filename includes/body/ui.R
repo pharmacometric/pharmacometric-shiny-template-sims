@@ -94,8 +94,10 @@ body.main <- moveable(
       title = "Tables",
       editbtn = TRUE,
       tabs = list(
-        tabEntry("Summary",
-                 DTOutput('summaryrestbl')
+        tabEntry("Result summary",
+                 DTOutput('summaryrestbl')),
+        tabEntry("Subject Summary",
+                 DTOutput('subrestbl')
         ),
         tabEntry("Raw result",
                  DTOutput('rawrestbl'))
