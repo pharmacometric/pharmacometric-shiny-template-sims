@@ -30,7 +30,7 @@ MIT. Use freely, but please acknowledge our work and refer others to use the tem
 
 ### Issues
 
-If you have issues or question, create an issue or contribute to one within the issue tab of this github repository
+If you have issues or questions, create an 'issue' or contribute to one within the issue tab of this github repository
 
 
 ### Contributors
