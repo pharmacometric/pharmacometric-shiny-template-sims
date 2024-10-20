@@ -26,7 +26,7 @@ body.main <- moveable(
                  numericInput("samplingfrequency","Sampling frequency (hr)",1, width = "100%"),
                  actionButton("runsimbutton", "Start simulation", icon = icon("running"))
                  ),
-        tabEntry("Parameters", "First tab")
+        tabEntry("Parameters", uiOutput("mrgsolveparms"))
       ),
       footer = textOutput("tracksimulations")
     ),
