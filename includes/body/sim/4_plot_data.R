@@ -26,7 +26,7 @@ observe({
 
 
     if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim)) {
-      gplo1 <- ggplot(data = GLOBAL$lastsim) +
+      gplo1 <- ggplot(data = GLOBAL$lastsim %>% mutate(byID = paste0("Group ",Group,": ID ", ID))) +
         geom_line(aes(x = time, y = IPRED, color = Group)) +
         labs(
           title = "Total US population over time",
@@ -56,7 +56,7 @@ observe({
         )
 
       if (input$graphtype == "Facet by ID") {
-        gplo1 <- gplo1 + aes(color = ID) + facet_wrap(ID ~ ., ncol = 3)
+        gplo1 <- gplo1 + aes(color = ID) + facet_wrap(byID ~ ., ncol = 3)
       }
       if (input$graphtype == "Facet by Group") {
         gplo1 <- gplo1 + facet_wrap(Group ~ ., ncol = 3)
