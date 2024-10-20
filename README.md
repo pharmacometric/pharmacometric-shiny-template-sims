@@ -15,7 +15,7 @@ Standardization facilitates collaborations between researchers by providing a co
 
 ### Issues
 
-If you have issues or question, create an issue or contribute to one within the issue tab of this github repository
+If you have issues or questions, create an 'issue' or contribute to one within the issue tab of this github repository
 
 
 ### Contributors
