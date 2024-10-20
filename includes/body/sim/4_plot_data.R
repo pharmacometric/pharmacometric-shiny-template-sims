@@ -30,8 +30,8 @@ observe({
       gplo1 <- ggplot(data = GLOBAL$lastsim %>% mutate(byID = paste0("Group ",Group,": ", ID))) +
         geom_line(aes(x = time, y = IPRED, color = Group)) +
         labs(
-          title = "Total US population over time",
-          subtitle = "Population in thousands",
+          #title = "Total US population over time",
+          #subtitle = "Population in thousands",
           x = input$labelx,
           y = input$labely
         ) +
