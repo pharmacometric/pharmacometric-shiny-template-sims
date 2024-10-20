@@ -22,11 +22,10 @@ output$distPlot <- renderPlot({
 observe({
   output$distPlot <- renderPlot({
 
-    updateGraphStatus("...")
+    updateGraphStatus("Preparing plots...")
 
 
     if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim)) {
-      updateGraphStatus("Preparing plots...")
       gplo1 <- ggplot(data = GLOBAL$lastsim) +
         geom_line(aes(x = time, y = IPRED, color = Group)) +
         labs(
@@ -65,7 +64,7 @@ observe({
       if (input$graphtype == "Facet by Dose") {
         gplo1 <- gplo1 + facet_wrap(Dose ~ ., ncol = 3)
       }
-      disableSims('false')
+
       updateGraphStatus("Plots completed.")
       gplo1
     }
