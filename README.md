@@ -1,6 +1,6 @@
 # Standardized R shiny template for PK/PD/QSP simulations
 
-<img src="www/sample.jpg">
+<img src="www/preview2.png">
 
 
 __Sampled deployed template__: https://pharmacometric.shinyapps.io/pharmacometric-shiny-template/
