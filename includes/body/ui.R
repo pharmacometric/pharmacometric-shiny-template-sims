@@ -33,6 +33,7 @@ body.main <- moveable(
     ),
     card.pro(
       title = "Regimen setup",
+      icon = icon("book"),
       removebtn = FALSE,
       colorbtn = FALSE,
       expandbtn = FALSE,
@@ -48,6 +49,7 @@ body.main <- moveable(
   primePanel(
     card.pro(
       title = "Plot graph",
+      icon = icon("fire"),
       header.bg = "yellow",
       xtra.header.content = textOutput("reportgraphstatus"),
       plotOutput("distPlot", height = 600),
@@ -92,6 +94,7 @@ body.main <- moveable(
     ),
     card.pro(
       title = "Tables",
+      icon = icon("table"),
       editbtn = TRUE,
       tabs = list(
         tabEntry("Summary",
