@@ -1,9 +1,9 @@
 #########################################################################################
 #########################################################################################
 ##
-##  Document Path: ~/ShinyApps/collective4/modules/template/global.R
+##  Document Path: global.R
 ##
-##  R version 4.2.0 (2022-04-22)
+##  R version: 4.2.0 (2022-04-22)
 ##
 ##  Program purpose: Global library loads and variables
 ##
@@ -11,23 +11,21 @@
 #########################################################################################
 
 
-
-
 # load libraries and print their versions
 quickcode::libraryAll(clearPkgs = TRUE,
-shiny,
-shinyjs,
-rhandsontable,
-DT,
-flextable,
-nlme,
-markdown,
-card.pro,
-dplyr,
-ggplot2,
-magrittr,
-mrgsolve,
-patchwork
+  shiny,
+  shinyjs,
+  rhandsontable,
+  DT,
+  flextable,
+  nlme,
+  markdown,
+  card.pro,
+  dplyr,
+  ggplot2,
+  magrittr,
+  mrgsolve,
+  patchwork
 )
 
 # clear console, set dir, load libs and load files
