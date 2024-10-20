@@ -14,11 +14,10 @@ modparms <- param(mod)
 # mod <- update(mod, end = 120, delta = 4, param = list(CL = 19.1))
 
 
-
+set.seed(seed.val)
 
 
 data01 <- reactive({
-  set.seed(input$simulationseed)
   dataa <- finalregimen()
   if (nrow(dataa)) {
     d1 <- dataa %>% mutate(
