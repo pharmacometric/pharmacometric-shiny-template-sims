@@ -49,7 +49,7 @@ body.main <- moveable(
   primePanel(
     card.pro(
       title = "Plot graph",
-      icon = icon("fire"),
+      icon = icon("chart-simple"),
       header.bg = "yellow",
       xtra.header.content = textOutput("reportgraphstatus"),
       plotOutput("distPlot", height = 600),
