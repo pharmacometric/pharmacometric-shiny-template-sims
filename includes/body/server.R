@@ -3,14 +3,8 @@ for(e in list.files(file.path(this.path,"sim/"), pattern = ".R$"))
 
 
 
-
-
-# tracking simulations
-lastsimulation = reactiveVal(0)
-
-
 output$tracksimulations <- renderText({
-  if(!lastsimulation()){
+  if(is.null(GLOBAL$lastsim)){
     "No simulations have been run."
   }
 })
@@ -19,16 +13,13 @@ output$tracksimulations <- renderText({
 
 observeEvent(input$runsimbutton,{
   disableSims()
+  #Sys.sleep(2)
   GLOBAL$start.sim <- TRUE
 })
 
 
-output$subrestbl = renderDT(
-  data01(), options = list(lengthChange = FALSE), filter = list(position = "top")
-)
-
 output$summaryrestbl = renderDT(
-  data.frame(Treatment = letters[1:3],AUC = number(3), Cmax = number(3)), options = list(lengthChange = FALSE,dom = 't')
+  data01(), options = list(lengthChange = FALSE,dom = 't')
 )
 
 output$rawrestbl = renderDT(
