@@ -10,13 +10,12 @@
 
 observe({
   if (GLOBAL$start.sim) {
-
     updateSimStatus("Preparing data...")
     dataa <- data01()
 
-
+    set.seed(input$simulationseed)
     updateSimStatus("Running simulations...")
-    GLOBAL$lastsim <- mod %>%
+    GLOBAL$lastsim <- GLOBAL$mod %>%
       data_set(dataa) %>% # idata_set(exidata) %>% ev(amt = 100, ii = 24, addl = 10) %>%
       mrgsim(
         end = 7 * input$enddoseat,
