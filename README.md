@@ -16,7 +16,7 @@ Standardization facilitates collaborations between researchers by providing a co
 ```{r}
 
 # Download and unzip the content of this repository
-# Set working directory to the downloaded folder
+# Set working directory to the unzipped folder
 setwd("pharmacometric-shiny-template")
 
 # Load shiny and run app
