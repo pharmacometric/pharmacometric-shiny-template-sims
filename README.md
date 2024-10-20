@@ -12,6 +12,18 @@ Standardized scripts reduce redundancy and ensure consistency in how results are
 Standardization facilitates collaborations between researchers by providing a common framework and language for developing interactive analyses and visualizations. Overall, it improves the rigor, transparency and quality of pharmacometrics work that uses interactive reporting tools.
 
 
+### Usage 
+```{r}
+
+# Download and unzip the content of this repository
+# Set working directory to the downloaded folder
+setwd("pharmacometric-shiny-template")
+
+# Load shiny and run app
+library(shiny)
+runApp()
+
+```
 
 ### Issues
 
