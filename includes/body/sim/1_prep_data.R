@@ -13,25 +13,41 @@ mod <- mread("sim", project = file.path(this.path, "sim"))
 modparms <- param(mod)
 # mod <- update(mod, end = 120, delta = 4, param = list(CL = 19.1))
 
+GLOBAL$x1exec <- TRUE
 observe({
 
   GLOBAL$sim.parameters <- param(mod)
+  simparameters <- indexed(names(GLOBAL$sim.parameters))
 
+  if(GLOBAL$x1exec){
   output$mrgsolveparms <- renderText({
-    paste0("Model parameter count: ",length(GLOBAL$sim.parameters))
+    HTML(paste0("<b>Model Parameters</b>: ",length(GLOBAL$sim.parameters)))
   })
 
-  for(upi in indexed(names(GLOBAL$sim.parameters)))
-  insertUI(
-    selector = "#mrgsolveparms",
-    where = "afterEnd",
-    ui = sliderInput(paste0("parm",upi$key),
-                     upi$value,
-                     min = as.numeric(GLOBAL$sim.parameters[upi$value])/1000,
-                     max = 100 + as.numeric(GLOBAL$sim.parameters[upi$value])*10,
-                     value = as.numeric(GLOBAL$sim.parameters[upi$value]),
-                     width = "100%")
-  )
+
+    print("hello")
+    for(upi in simparameters)
+      insertUI(
+        selector = "#mrgsolveparms",
+        where = "afterEnd",
+        ui = sliderInput(paste0("parm",upi$key),
+                         upi$value,
+                         min = as.numeric(GLOBAL$sim.parameters[upi$value])/1000,
+                         max = 100 + as.numeric(GLOBAL$sim.parameters[upi$value])*10,
+                         value = as.numeric(GLOBAL$sim.parameters[upi$value]),
+                         width = "100%")
+      )
+    GLOBAL$x1exec <- FALSE
+  }
+
+
+  # configure the model to update when parameters are updated
+  dfparm = data.frame(Init = 0)
+  for(upi in simparameters){
+    dfparm[,upi$value] = input[[paste0("parm",upi$key)]]
+  }
+  mod <- update(mod, param = as.list(dfparm))
+
 })
 
 set.seed(seed.val)
