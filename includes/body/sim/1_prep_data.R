@@ -9,49 +9,48 @@
 #########################################################################################
 #########################################################################################
 
-mod <- mread("sim", project = file.path(this.path, "sim"))
-modparms <- param(mod)
+GLOBAL$mod <- mread("sim", project = file.path(this.path, "sim"))
+
 # mod <- update(mod, end = 120, delta = 4, param = list(CL = 19.1))
 
 GLOBAL$x1exec <- TRUE
 observe({
-
-  GLOBAL$sim.parameters <- param(mod)
+  GLOBAL$sim.parameters <- param(GLOBAL$mod)
   simparameters <- indexed(names(GLOBAL$sim.parameters))
 
-  if(GLOBAL$x1exec){
-  output$mrgsolveparms <- renderText({
-    HTML(paste0("<b>Model Parameters</b>: ",length(GLOBAL$sim.parameters)))
-  })
+  if (GLOBAL$x1exec) {
+    output$mrgsolveparms <- renderText({
+      HTML(paste0("<b>Model Parameters</b>: ", length(GLOBAL$sim.parameters)))
+    })
 
-
-    print("hello")
-    for(upi in simparameters)
+    for (upi in simparameters) {
       insertUI(
         selector = "#mrgsolveparms",
         where = "afterEnd",
-        ui = sliderInput(paste0("parm",upi$key),
-                         upi$value,
-                         min = as.numeric(GLOBAL$sim.parameters[upi$value])/1000,
-                         max = 100 + as.numeric(GLOBAL$sim.parameters[upi$value])*10,
-                         value = as.numeric(GLOBAL$sim.parameters[upi$value]),
-                         width = "100%")
+        ui = sliderInput(paste0("parm", upi$key),
+          upi$value,
+          min = as.numeric(GLOBAL$sim.parameters[upi$value]) / 1000,
+          max = 100 + as.numeric(GLOBAL$sim.parameters[upi$value]) * 10,
+          value = as.numeric(GLOBAL$sim.parameters[upi$value]),
+          width = "100%"
+        )
       )
+    }
     GLOBAL$x1exec <- FALSE
+  } else {
+    # configure the model to update when parameters are updated
+    dfparm <- data.frame(Init = 0)
+    for (upi in simparameters) {
+      dfparm[, upi$value] <- input[[paste0("parm", upi$key)]]
+    }
+    GLOBAL$mod <- update(GLOBAL$mod, param = as.list(dfparm))
   }
-
-
-  # configure the model to update when parameters are updated
-  dfparm = data.frame(Init = 0)
-  for(upi in simparameters){
-    dfparm[,upi$value] = input[[paste0("parm",upi$key)]]
-  }
-  mod <- update(mod, param = as.list(dfparm))
-
 })
 
-set.seed(seed.val)
 
+
+
+set.seed(seed.val)
 
 data01 <- reactive({
   dataa <- finalregimen()
@@ -64,15 +63,17 @@ data01 <- reactive({
       evid = 1
     )
 
-    lbl1 = unique(d1$Group)
-    lbl2 = setNames(0:{length(lbl1)-1},lbl1)
+    lbl1 <- unique(d1$Group)
+    lbl2 <- setNames(0:{
+      length(lbl1) - 1
+    }, lbl1)
 
     merge(d1, data.frame(ONUM = 1:input$samplesize)) %>%
-      mutate(Group2 = lbl2[Group], ID = ONUM+(Group2*input$samplesize)) %>%
+      mutate(Group2 = lbl2[Group], ID = ONUM + (Group2 * input$samplesize)) %>%
       arrange(Group, ID) %>%
       group_by(Group, ID) %>%
       mutate(
-        WT = round(rnorm(n(), mean = WT[1], sd = 15),2),
+        WT = round(rnorm(n(), mean = WT[1], sd = 15), 2),
         time = c(0, pop_off(cumsum(Frequency * 7)))
       ) %>%
       ungroup()
