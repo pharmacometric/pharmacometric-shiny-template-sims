@@ -11,13 +11,10 @@
 #########################################################################################
 
 
-# clear console, set dir, load libs and load files
-quickcode::clean(clearPkgs = TRUE, source = c(
-  "utils.R"
-))
+
 
 # load libraries and print their versions
-quickcode::libraryAll(
+quickcode::libraryAll(clearPkgs = TRUE,
 shiny,
 shinyjs,
 rhandsontable,
@@ -33,7 +30,10 @@ mrgsolve,
 patchwork
 )
 
-
+# clear console, set dir, load libs and load files
+quickcode::clean(source = c(
+  "utils.R"
+))
 
 # add all individual utils
 for (ui_each in c(
