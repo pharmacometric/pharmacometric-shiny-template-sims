@@ -24,7 +24,6 @@ body.main <- moveable(
                  numericInput("samplesize","Number of participants (per arm)",100, width = "100%"),
                  numericInput("enddoseat","Treatment duration (wks)",30, width = "100%"),
                  numericInput("samplingfrequency","Sampling frequency (hr)",1, width = "100%"),
-                 numericInput("simulationseed","Simulation seed",1234, width = "100%"),
                  actionButton("runsimbutton", "Start simulation", icon = icon("running"))
                  ),
         tabEntry("Parameters", "First tab")
@@ -94,10 +93,8 @@ body.main <- moveable(
       title = "Tables",
       editbtn = TRUE,
       tabs = list(
-        tabEntry("Result summary",
-                 DTOutput('summaryrestbl')),
-        tabEntry("Subject Summary",
-                 DTOutput('subrestbl')
+        tabEntry("Summary",
+                 DTOutput('summaryrestbl')
         ),
         tabEntry("Raw result",
                  DTOutput('rawrestbl'))
