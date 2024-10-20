@@ -24,6 +24,7 @@ body.main <- moveable(
                  numericInput("samplesize","Number of participants (per arm)",100, width = "100%"),
                  numericInput("enddoseat","Treatment duration (wks)",30, width = "100%"),
                  numericInput("samplingfrequency","Sampling frequency (hr)",1, width = "100%"),
+                 numericInput("simulationseed","Simulation seed",1320, width = "100%"),
                  actionButton("runsimbutton", "Start simulation", icon = icon("running"))
                  ),
         tabEntry("Parameters", uiOutput("mrgsolveparms"))
