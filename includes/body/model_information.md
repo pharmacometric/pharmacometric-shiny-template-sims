@@ -9,18 +9,18 @@ The purpose of this template is to help create a workflow for scientists to buil
 
 ### Features
 
-The following features are available in the current template for you to get started.\
+The following features are available in the current template for you to get started.
 
- - __User customizable interface__. This means the user can move around the panels to desired locations on the screen. They may also change the title of the panels to suit their needs. 
+ - __User customizable interface__. This means the user can move around the panels to desired locations on the screen. They may also change the title and color of the panels to suite their needs. 
  - __Panel location and features saved across sessions__. This means that after re-arrangement of panels, changing panel colors or titles, one may refresh the page and the settings are retained.
- - __Simulation inputs are already setup__ . Fields for setting up simulations, and regimen table for building regimen to compare groups are already set-up and configured in the server 
- - __Auto detection of parameters and creation of inputs__. Parameters within the mrgsolve file will automatically be detected and input fields will be created for them to allow the user to vary them.
+ - __Resizable Panels__. Panels are resizable to allow easy focus on specific contents, like plots or tables of result.
+ - __Simulation inputs are already setup__. Input fields for setting up simulations, and regimen table for building regimen to compare groups are already set-up and configured in the server 
+ - __Auto detection of parameters and creation of inputs__. Parameters within the mrgsolve file will be automatically detected and input fields will be created for them to allow the user to vary them.
  - __Plot creation is configured__. Simulation results will be used to create plots. Settings for plots can be toggled using the cog symbol on the right side of the plot panel. 
- - __Summary of result and raw output__. The results are configured to be automatically summarized to obtain key PK parameters.
- - __Configured for speed__. Continue effort is being made to improve the template to ensure great performance for simulation apps. 
- 
+ - __Summary of results and raw output__. The results are configured to be automatically summarized to obtain key PK parameters, as well as provide access to raw data outputs.
+ - __Configured for speed__. Continued effort is being made to improve the template to ensure great speed and performance for simulation apps.
  - __Aesthetics for completion__. App title are formatted to look professional. A sample icon is also provided, which may be replaced when updating the template to suit your need.
- 
+
  
 
 ### License and term of use
