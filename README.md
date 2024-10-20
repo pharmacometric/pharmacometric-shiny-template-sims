@@ -1,4 +1,4 @@
-# Standardized R shiny template for PK/PD/QSP simulations
+# <img src="www/logo.jpg"> Standardized R shiny template for PK/PD/QSP simulations
 
 <img src="www/preview2.png">
 
