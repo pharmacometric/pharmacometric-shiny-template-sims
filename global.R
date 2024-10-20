@@ -18,15 +18,19 @@ quickcode::clean(clearPkgs = TRUE, source = c(
 
 # load libraries and print their versions
 quickcode::libraryAll(
-  shiny,
-  shinyjs,
-  rhandsontable,
-  DT,
-  card.pro,
-  dplyr,
-  ggplot2,
-  magrittr,
-  mrgsolve
+shiny,
+shinyjs,
+rhandsontable,
+DT,
+flextable,
+nlme,
+markdown,
+card.pro,
+dplyr,
+ggplot2,
+magrittr,
+mrgsolve,
+patchwork
 )
 
 
