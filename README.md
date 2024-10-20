@@ -13,7 +13,7 @@ Standardization facilitates collaborations between researchers by providing a co
 
 
 ### Usage 
-```{r}
+```r
 
 # Download and unzip the content of this repository
 # Set working directory to the unzipped folder
