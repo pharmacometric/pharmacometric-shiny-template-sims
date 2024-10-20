@@ -1,4 +1,7 @@
-## Description of model
+#### Ideally, this is the section where you'd include the model description. However, for this template, it will be the section to explain some key features of this template. You may call it a sort of 'documentation'
+
+
+## Documentation of this template
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
 
