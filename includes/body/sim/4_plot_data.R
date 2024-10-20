@@ -20,13 +20,14 @@ output$distPlot <- renderPlot({
 
 
 observe({
+  if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim))
   output$distPlot <- renderPlot({
 
     updateGraphStatus("Preparing plots...")
 
 
     if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim)) {
-      gplo1 <- ggplot(data = GLOBAL$lastsim %>% mutate(byID = paste0("Group ",Group,": ID ", ID))) +
+      gplo1 <- ggplot(data = GLOBAL$lastsim %>% mutate(byID = paste0("Group ",Group,": ", ID))) +
         geom_line(aes(x = time, y = IPRED, color = Group)) +
         labs(
           title = "Total US population over time",
