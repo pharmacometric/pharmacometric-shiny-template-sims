@@ -21,7 +21,7 @@ setwd("pharmacometric-shiny-template")
 
 # Load shiny and run app
 library(shiny)
-runApp()
+runApp(launch.browser = TRUE)
 
 ```
 
