@@ -56,13 +56,16 @@ body.main <- moveable(
       sidebar = div(
         tags$label("Graph settings"),
         selectInput("graphtype","Graph type",choices = c(
-          "Combined","Facet by ID","Facet by Group","Facet by Dose"
-        ), selected = "Combined"),
+          "Combined","Combined_group","Facet by ID","Facet by Group","Facet by Dose"
+        ), selected = "Facet by Group"),
         conditionalPanel(
-          condition = "input.graphtype == 'Combined' | input.graphtype == 'Facet by Group'",
+          condition = "input.graphtype == 'Combined' | input.graphtype == 'Combined_group' | input.graphtype == 'Facet by Group'",
         selectInput("graphtype2","Statistic",choices = c(
-          "Mean","Mean ± SD", "Mean ± SEM","Median","Median ± 90% PI"
-        ), selected = "Mean")),
+          "Mean","Mean ± SD", "Mean ± SEM","Median","Median ± 90% PI","Median ± 95% PI"
+        ), selected = "Median ± 90% PI")),
+        selectInput("loglinear","Semi-log or linear",choices = c(
+          "Linear","Semi-Log"
+        )),
         textInput("labely", "Y-label", "Predicted Concentration (μg/ml)"),
         textInput("labelx", "X-label", "Time after first dose (days)"),
         selectInput("graphfont","Font type",choices = c(
