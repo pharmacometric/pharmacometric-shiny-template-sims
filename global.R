@@ -12,21 +12,21 @@
 
 
 # load libraries and print their versions
-quickcode::libraryAll(clearPkgs = TRUE,
-  shiny,
-  shinyjs,
-  rhandsontable,
-  DT,
-  flextable,
-  nlme,
-  markdown,
-  card.pro,
-  dplyr,
-  ggplot2,
-  magrittr,
-  mrgsolve,
-  patchwork
-)
+
+library(shiny)
+library(shinyjs)
+library(rhandsontable)
+library(DT)
+library(flextable)
+library(nlme)
+library(markdown)
+library(card.pro)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(mrgsolve)
+library(quickcode)
+library(patchwork)
 
 # clear console, set dir, load libs and load files
 quickcode::clean(source = c(
