@@ -7,6 +7,7 @@
 #########################################################################################
 #########################################################################################
 
+# sample plot as placeholder
 output$distPlot <- renderPlot({
   plot(1:100,
        1:100,
@@ -19,22 +20,30 @@ output$distPlot <- renderPlot({
 
 
 
+
+
+
+# plot when simulation finishes
 observe({
-  if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim))
+  if (not.null(GLOBAL$lastsim))
   output$distPlot <- renderPlot({
 
     updateGraphStatus("Preparing plots...")
 
 
     if (not.null(GLOBAL$lastsim) & not.na(GLOBAL$start.sim)) {
-      gplo1 <- ggplot(data = GLOBAL$lastsim %>% mutate(byID = paste0("Group ",Group,": ", ID))) +
-        geom_line(aes(x = time, y = IPRED, color = Group)) +
-        labs(
-          #title = "Total US population over time",
-          #subtitle = "Population in thousands",
-          x = input$labelx,
-          y = input$labely
-        ) +
+
+      # get data based on selection
+      datatoplot <- switch (input$graphtype,
+        "Combined" = data01_all(),
+        "Combined_group" = data02_group(),
+        "Facet by ID" = GLOBAL$lastsim %>% mutate(byID = paste0("Group ",Group,": ", ID)),
+        "Facet by Group" = data02_group(),
+        "Facet by Dose" = GLOBAL$lastsim
+      )
+
+      # create a ggplot object
+      rgplot <- ggplot(data = datatoplot, aes(x = time))+
         theme_bw() +
         potheme +
         theme(
@@ -54,20 +63,57 @@ observe({
           legend.text = element_text(family = input$graphfont),
           legend.title = element_text(family = input$graphfont),
           title = element_text(family = input$graphfont)
+        )+
+        labs(
+          x = input$labelx,
+          y = input$labely
         )
 
-      if (input$graphtype == "Facet by ID") {
-        gplo1 <- gplo1 + aes(color = ID) + facet_wrap(byID ~ ., ncol = 3)
-      }
-      if (input$graphtype == "Facet by Group") {
-        gplo1 <- gplo1 + facet_wrap(Group ~ ., ncol = 3)
-      }
-      if (input$graphtype == "Facet by Dose") {
-        gplo1 <- gplo1 + facet_wrap(Dose ~ ., ncol = 3)
+
+
+      # plot needed metrics
+      if(input$graphtype %in% c("Combined","Combined_group","Facet by Group")){
+        #"Mean","Mean ± SD", "Mean ± SEM",
+        if(input$graphtype2 %in% c("Mean","Mean ± SD", "Mean ± SEM"))
+          rgplot <-  rgplot + geom_line(aes(y = IPRED_mean, color = Group))
+
+        #"Median","Median ± 90% PI","Median ± 95% PI"
+        if(input$graphtype2 %in% c("Median","Median ± 90% PI","Median ± 95% PI"))
+          rgplot <-  rgplot + geom_line(aes(y = IPRED_med, color = Group))
+
+
+        if(input$graphtype2 == "Mean ± SD")
+          rgplot <-  rgplot + geom_ribbon(aes(ymin=IPRED_mean - sd, ymax= IPRED_mean  + sd, fill = Group), alpha = 0.3)
+        if(input$graphtype2 == "Mean ± SEM")
+          rgplot <-  rgplot + geom_ribbon(aes(ymin=IPRED_mean - sem, ymax= IPRED_mean  + sem, fill = Group), alpha = 0.3)
+
+        if(input$graphtype2 == "Median ± 90% PI")
+          rgplot <-  rgplot + geom_ribbon(aes(ymin=q05, ymax= q95, fill = Group), alpha = 0.3)
+
+        if(input$graphtype2 == "Median ± 95% PI")
+          rgplot <-  rgplot + geom_ribbon(aes(ymin=q025, ymax= q975, fill = Group), alpha = 0.3)
+
       }
 
+
+      # Facets
+      if (input$graphtype == "Facet by ID") {
+        rgplot <- rgplot + aes(color = ID) + facet_wrap(byID ~ ., ncol = 3)
+      }
+      if (input$graphtype == "Facet by Group") {
+        rgplot <- rgplot + facet_wrap(Group ~ ., ncol = 3)
+      }
+      if (input$graphtype == "Facet by Dose") {
+        rgplot <- rgplot + facet_wrap(Dose ~ ., ncol = 3)
+      }
+
+      # Semi-log or linear
+      if(input$loglinear == "Semi-Log")
+        rgplot <-  rgplot + scale_y_log10()
+
+
       updateGraphStatus("Plots completed.")
-      gplo1
+      rgplot
     }
   })
 })
