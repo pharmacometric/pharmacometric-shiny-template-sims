@@ -3,7 +3,7 @@
 <img src="www/preview2.png">
 
 
-__Sampled deployed template__: https://pharmacometric.shinyapps.io/pharmacometric-shiny-template/
+__Sample deployed template__: https://pharmacometric.shinyapps.io/pharmacometric-shiny-template/
 
 Standardizing R scripts used to create shiny dashboards for reporting scientific findings, doing simulations and estimation, and regulatory submissions is important for several reasons. It allows pharmacometricians in different organizations and companies to share and reuse code more easily. 
 
@@ -17,7 +17,7 @@ Standardization facilitates collaborations between researchers by providing a co
 
 # Download and unzip the content of this repository
 # Set working directory to the unzipped folder
-setwd("pharmacometric-shiny-template")
+setwd("pharmacometric-shiny-template-sims")
 
 # Load shiny and run app
 library(shiny)
