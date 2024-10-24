@@ -97,6 +97,7 @@ body.main <- moveable(
     ),
     card.pro(
       title = "Tables",
+      header.bg = "blueLight",
       icon = icon("table"),
       editbtn = TRUE,
       tabs = list(
