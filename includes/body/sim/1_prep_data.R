@@ -50,6 +50,21 @@ observe({
 
 
 
+#identical(rTable_content(),input$rTable)
+
+# no data
+GLOBAL$lastregimen <- data.frame()
+
+#fetch regimen
+finalregimen <- reactive({
+  if (!is.null(input$rhstable1)){
+    d <- as.data.frame(hot_to_r(input$rhstable1))
+    GLOBAL$lastregimen <- d[complete.cases(d),]
+  }
+  GLOBAL$lastregimen
+})
+
+
 set.seed(seed.val)
 
 data01 <- reactive({
@@ -74,7 +89,7 @@ data01 <- reactive({
       group_by(Group, ID) %>%
       mutate(
         WT = round(rnorm(n(), mean = WT[1], sd = 15), 2),
-        time = c(0, pop_off(cumsum(Frequency * 7)))
+        time = ifelse(Frequency>1,c(0, pop_off(cumsum(Frequency * 7))), Frequency)
       ) %>%
       ungroup()
   }
