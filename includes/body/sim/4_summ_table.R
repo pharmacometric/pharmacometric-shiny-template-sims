@@ -2,7 +2,7 @@ summar01 <- reactive({
   dataa <- GLOBAL$lastsim
   if (length(dataa) & not.null(dataa)) {
     if (nrow(dataa)) {
-      print(names(dataa))
+      #joooooooooooo<<-((dataa))
       return(dataa %>%
         filter(between(time,input$selectedrangesumm[1], input$selectedrangesumm[2])) %>%
         group_by(Group, ID) %>%
