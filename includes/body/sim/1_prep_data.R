@@ -59,6 +59,7 @@ GLOBAL$lastregimen <- data.frame()
 finalregimen <- reactive({
   if (!is.null(input$rhstable1)){
     d <- as.data.frame(hot_to_r(input$rhstable1))
+    d[is.empty(d)] = NA
     GLOBAL$lastregimen <- d[complete.cases(d),]
   }
   GLOBAL$lastregimen
