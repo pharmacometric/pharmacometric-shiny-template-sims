@@ -19,11 +19,11 @@ observeEvent(input$runsimbutton,{
 
 
 output$summaryrestbl = renderDT(
-  data01(), options = list(lengthChange = FALSE)#,dom = 't'
+  data01() %>% select(Group,ID,time,WT,Dose,cmt,ii,addl), options = list(lengthChange = FALSE)#,dom = 't'
 )
 
 output$rawrestbl = renderDT(
-  summar01(), options = list(lengthChange = FALSE), filter = list(position = "top")
+  summary01(), options = list(lengthChange = FALSE), filter = list(position = "top")
 )
 
 
@@ -34,14 +34,5 @@ output$rhstable1 <- renderRHandsontable({
 })
 
 
-#identical(rTable_content(),input$rTable)
 
-GLOBAL$lastregimen <- data.frame()
-
-finalregimen <- reactive({
-  if (!is.null(input$rhstable1)){
-    GLOBAL$lastregimen <- as.data.frame(hot_to_r(input$rhstable1))
-  }
-  GLOBAL$lastregimen
-})
 
