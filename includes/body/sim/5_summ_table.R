@@ -52,7 +52,6 @@ observe({
   updateSliderInput(
     session = session,
     "selectedrangesumm",
-    "Select range for summary",
     value = c(0, input$enddoseat * 7), max = input$enddoseat * 7
   )
 })
