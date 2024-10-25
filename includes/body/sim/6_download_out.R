@@ -1,3 +1,20 @@
+output$downloadimg2 <- downloadHandler(
+  filename = function() {
+    paste0('app1-res-image-', Sys.Date(), '.png')
+  },
+  content = function(con) {
+    ggsave(
+      con,
+      dpi = input$downimgdpi,
+      width = input$downimgw,
+      height = input$downimgh,
+      scale = input$downimgs,
+      units = 'px'
+    )
+  }
+)
+
+
 output$downloadtable1 <- downloadHandler(
   filename = function() {
     paste0('app1-res-summ-all-', Sys.Date(), '.csv')
