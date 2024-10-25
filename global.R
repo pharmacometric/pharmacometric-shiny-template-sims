@@ -27,6 +27,7 @@ library(magrittr)
 library(mrgsolve)
 library(quickcode)
 library(patchwork)
+library(table1)
 
 # clear console, set dir, load libs and load files
 quickcode::clean(source = c(
