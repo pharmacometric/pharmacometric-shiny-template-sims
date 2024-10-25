@@ -23,7 +23,7 @@ output$summaryrestbl = renderDT(
 )
 
 output$rawrestbl = renderDT(
-  iris, options = list(lengthChange = FALSE), filter = list(position = "top")
+  summar01(), options = list(lengthChange = FALSE), filter = list(position = "top")
 )
 
 
