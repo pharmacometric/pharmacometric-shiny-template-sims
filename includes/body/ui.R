@@ -65,7 +65,7 @@ body.main <- moveable(
         ), selected = "Median ± 90% PI")),
         selectInput("loglinear","Semi-log or linear",choices = c(
           "Linear","Semi-Log"
-        )),
+        ), width = "100%"),
         textInput("labely", "Y-label", "Predicted Concentration (μg/ml)"),
         textInput("labelx", "X-label", "Time after first dose (days)"),
         selectInput("graphfont","Font type",choices = c(
@@ -103,7 +103,7 @@ body.main <- moveable(
       sliderInput("selectedrangesumm",
                   "Select treatment time range for summary",
                   value = c(0, 30 * 7), min = 0, max = 30 * 7,
-                  width = "100%"
+                  width = "90%"
       ),
       tabs = list(
         tabEntry("Exposure summary",
@@ -114,6 +114,18 @@ body.main <- moveable(
         tabEntry("Individal regimen",
                  DTOutput('summaryrestbl')
         )
+      ),
+      sidebar = div(
+        tags$label("Table outputs"),
+        hr(),
+        actionButton("downloadtableall", "Download all tables",icon = icon("download"), width = "90%"),
+        br(),br(),
+        actionButton("downloadtable1", "Download summaries",icon = icon("download"), width = "90%"),
+        br(),br(),
+        actionButton("downloadtable2", "Download individuals",icon = icon("download"), width = "90%"),
+        br(),br(),
+        actionButton("downloadtable3", "Download regimen",icon = icon("download"), width = "90%")
+
       )
     )
   )
