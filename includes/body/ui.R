@@ -101,19 +101,19 @@ body.main <- moveable(
       icon = icon("table"),
       editbtn = TRUE,
       sliderInput("selectedrangesumm",
-                  "Select range for summary",
+                  "Select treatment time range for summary",
                   value = c(0, 30 * 7), min = 0, max = 30 * 7,
                   width = "100%"
       ),
       tabs = list(
         tabEntry("Exposure summary",
-                 DTOutput('summaryexptbl')
+                 tableOutput('summaryexptbl')
         ),
-        tabEntry("Summary",
+        tabEntry("Individual results",
+                 DTOutput('rawrestbl')),
+        tabEntry("Individal regimen",
                  DTOutput('summaryrestbl')
-        ),
-        tabEntry("Raw result",
-                 DTOutput('rawrestbl'))
+        )
       )
     )
   )
