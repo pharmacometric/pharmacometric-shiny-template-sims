@@ -27,7 +27,6 @@ output$distPlot <- renderPlot({
 observe({
   if (not.null(GLOBAL$lastsim))
   output$distPlot <- renderPlot({
-
     updateGraphStatus("Preparing plots...")
 
 
