@@ -90,3 +90,21 @@ po.nopanel <- list(theme(
 pop_off <- function(.){
   .[1:{length(.)-1}]
 }
+
+
+calculate_auc <- function(time, concentration) {
+  # Check if inputs are of the same length
+  if (length(time) != length(concentration)) {
+    stop("Time and concentration vectors must be of the same length.")
+  }
+
+  # Sort the time and concentration data by time
+  sorted_indices <- order(time)
+  time <- time[sorted_indices]
+  concentration <- concentration[sorted_indices]
+
+  # Calculate the AUC using the trapezoidal rule
+  auc <- sum((time[-1] - time[-length(time)]) * (concentration[-1] + concentration[-length(concentration)]) / 2)
+
+  return(auc)
+}
