@@ -100,7 +100,15 @@ body.main <- moveable(
       header.bg = "blueLight",
       icon = icon("table"),
       editbtn = TRUE,
+      sliderInput("selectedrangesumm",
+                  "Select range for summary",
+                  value = c(0, 30 * 7), min = 0, max = 30 * 7,
+                  width = "100%"
+      ),
       tabs = list(
+        tabEntry("Exposure summary",
+                 DTOutput('summaryexptbl')
+        ),
         tabEntry("Summary",
                  DTOutput('summaryrestbl')
         ),
