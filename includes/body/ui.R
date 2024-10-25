@@ -118,13 +118,15 @@ body.main <- moveable(
       sidebar = div(
         tags$label("Table outputs"),
         hr(),
-        actionButton("downloadtableall", "Download all tables",icon = icon("download"), width = "90%"),
+        downloadButton("downloadtable1", "Download summaries",icon = icon("download"), width = "90%"),
         br(),br(),
-        actionButton("downloadtable1", "Download summaries",icon = icon("download"), width = "90%"),
+        downloadButton("downloadtable2", "Download individuals",icon = icon("download"), width = "90%"),
         br(),br(),
-        actionButton("downloadtable2", "Download individuals",icon = icon("download"), width = "90%"),
+        downloadButton("downloadtable3", "Download regimen",icon = icon("download"), width = "90%"),
         br(),br(),
-        actionButton("downloadtable3", "Download regimen",icon = icon("download"), width = "90%")
+        "Download raw output from simulation",
+        downloadButton("downloadtable4", "Download raw result",icon = icon("download"), width = "90%")
+
 
       )
     )
