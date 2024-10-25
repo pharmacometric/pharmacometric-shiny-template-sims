@@ -6,10 +6,10 @@ summar01 <- reactive({
       return(dataa %>%
         filter(between(time,input$selectedrangesumm[1], input$selectedrangesumm[2])) %>%
         group_by(Group, ID) %>%
-        summary(
+        summarise(
           AUC = calculate_auc(time, IPRED),
-          Ctrough = min(IPRED),
-          Cmax = max(IPRED)
+          Ctrough = round(min(IPRED),2),
+          Cmax = round(max(IPRED),2)
         ))
     }
   }
@@ -26,10 +26,10 @@ summar01 <- reactive({
 
 summar02 <- reactive({
   dataa <- summar01()
-
   if (length(dataa)) {
     if (nrow(dataa)) {
-      return(table1(~ AUC + Ctrough + Cmax | as.factor(Group), data = dataa))
+      return(table1(~ AUC + Ctrough + Cmax | as.factor(Group), data = dataa, overall=,
+                    render.continuous=c(.="Mean (CV%)", .="Median [Min, Max]","Geo. mean (Geo. CV%)"="GMEAN (GCV%)")))
     }
   }
 
