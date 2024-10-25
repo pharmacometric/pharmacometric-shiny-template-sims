@@ -23,3 +23,8 @@
     background-color: gray;
     color: white;
 }
+
+
+#chat-container {
+  z-index: 101;
+}
