@@ -76,7 +76,8 @@ data01 <- reactive({
       addl = Additional,
       ii = Frequency * 7,
       cmt = ifelse(tolower(Route) == "iv", 2, 1),
-      evid = 1
+      evid = 1,
+      t0 = ii * (addl + 1)
     )
 
     lbl1 <- unique(d1$Group)
@@ -90,7 +91,7 @@ data01 <- reactive({
       group_by(Group, ID) %>%
       mutate(
         WT = round(rnorm(n(), mean = WT[1], sd = 15), 2),
-        time = ifelse(Frequency>1,c(0, pop_off(cumsum(Frequency * 7))), Frequency)
+        time = getTimeV(n(),t0)
       ) %>%
       ungroup()
   }
