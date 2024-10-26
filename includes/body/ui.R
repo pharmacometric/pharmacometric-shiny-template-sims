@@ -106,7 +106,7 @@ body.main <- moveable(
       icon = icon("table"),
       editbtn = TRUE,
       sliderInput("selectedrangesumm",
-        "Select treatment time range for summary",
+        "Select treatment time (days) range for summary",
         value = c(0, 30 * 7), min = 0, max = 30 * 7,
         width = "90%"
       ),
