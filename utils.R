@@ -85,7 +85,10 @@ po.nopanel <- list(theme(
 ))
 
 
-
+getTimeV <- function(n,t0){
+  if(n > 1) c(0, pop_off(cumsum(t0)))
+  else 0
+}
 
 pop_off <- function(.){
   .[1:{length(.)-1}]
