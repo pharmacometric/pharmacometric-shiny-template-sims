@@ -5,7 +5,7 @@
 
 ### Introduction
 
-The purpose of this template is to help create a workflow for scientists to build robust shiny apps for their pharmacometric models combining the power of shiny and mrgsolve R packages. As you will already notice, an example is presented of a simple model to allow easy tweaking by the user to quickly create their preferred app.
+The purpose of this template is to help create a standardized workflow for scientists to build robust shiny apps for their pharmacometric models combining the power of shiny and mrgsolve R packages. As you will already notice, an example is presented of a simple model to allow easy tweaking by the user to quickly create their preferred app.
 
 ### Features
 
