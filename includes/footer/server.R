@@ -1,1 +1,3 @@
-print(this.path)
+message(this.path)
+
+# include any server functions for footer
