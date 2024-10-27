@@ -5,14 +5,13 @@
 ##
 ##  R version: 4.2.0 (2022-04-22)
 ##
-##  Program purpose: Global library loads and variables
+##  Program purpose: Global library loads, prep environment and load libs
 ##
 #########################################################################################
 #########################################################################################
 
 
-# load libraries and print their versions
-
+# load libraries
 library(shiny)
 library(shinyjs)
 library(rhandsontable)
@@ -30,9 +29,9 @@ library(patchwork)
 library(table1)
 
 # clear console, set dir, load libs and load files
-quickcode::clean(source = c(
-  "utils.R"
-))
+clean(source = c("utils.R"))
+
+
 
 # add all individual utils
 for (ui_each in c(
@@ -45,7 +44,7 @@ for (ui_each in c(
 }
 
 
-
+# declare the global reactive values holder
 GLOBAL<- reactiveValues()
 GLOBAL$lastsim <- NULL
 GLOBAL$start.sim <- FALSE
