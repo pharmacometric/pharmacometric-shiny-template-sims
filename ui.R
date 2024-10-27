@@ -36,5 +36,6 @@ ui <- fluidPage(
   useShinyjs(),
   use.cardpro(theme = "a"),
   header.main,
-  body.main
+  body.main,
+  footer.main
 )
