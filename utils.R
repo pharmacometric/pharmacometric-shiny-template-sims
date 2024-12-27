@@ -1,6 +1,14 @@
-setpath <- function(){
-
-}
+############################################################################
+############################################################################
+##  Document Path: utils.R
+##
+##  Description: global functions and variables used by the app
+##
+##  R version 4.4.1 (2024-06-14 ucrt)
+##
+#############################################################################
+#############################################################################
+setpath <- function(){}
 
 
 source.part = function(path, which = c("ui","server"), input = NULL, output = NULL,session = NULL){
