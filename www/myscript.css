@@ -1,6 +1,9 @@
 #chat-container .chat-list-body{
   height: 100%!important;
 }
+.page-footer {
+    height: 120px;
+}
 #tracksimulations, #reportgraphstatus{
   color: red!important;
 }
